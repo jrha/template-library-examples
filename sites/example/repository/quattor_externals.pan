@@ -11,15 +11,17 @@ structure template repository/quattor_externals;
 "name" = "quattor_externals";
 "owner" = "grid.support@lal.in2p3.fr";
 "protocols" = list(
-  nlist("name","http",
-        "url","http://quattor.web.lal.in2p3.fr/packages/quattor/externals")
+    dict(
+        "name", "http",
+        "url", "http://quattor.web.lal.in2p3.fr/packages/quattor/externals",
+    ),
 );
 
-"contents" = nlist(
+"contents" = dict(
 # pkg = ncm-template-1.0.17-1-noarch
-escape("ncm-template-1.0.17-1-noarch"),nlist("name","ncm-template","version","1.0.17-1","arch","noarch"),
+escape("ncm-template-1.0.17-1-noarch"), dict("name", "ncm-template", "version", "1.0.17-1", "arch", "noarch"),
 # pkg = panc-9.3-1-noarch
-escape("panc-9.3-1-noarch"),nlist("name","panc","version","9.3-1","arch","noarch"),
+escape("panc-9.3-1-noarch"), dict("name", "panc", "version", "9.3-1", "arch", "noarch"),
 # pkg = perl-AppConfig-caf-1.9.1-1-noarch
-escape("perl-AppConfig-caf-1.9.1-1-noarch"),nlist("name","perl-AppConfig-caf","version","1.9.1-1","arch","noarch"),
+escape("perl-AppConfig-caf-1.9.1-1-noarch"), dict("name", "perl-AppConfig-caf", "version", "1.9.1-1", "arch", "noarch"),
 );

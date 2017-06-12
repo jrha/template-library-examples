@@ -7,6 +7,8 @@ unique template repository/config;
 
 include 'pan/functions';
 
+include 'components/spma/config';
+
 include'repository/snapshot/snapshot_variables';
 
 # Repositories related to base OS and quattor client (should be first)
@@ -17,10 +19,12 @@ variable YUM_SITE_SNAPSHOT_NS ?= YUM_SNAPSHOT_NS;
 variable SITE_REPOSITORY_LIST ?= list();
 variable SITE_REPOSITORY_CONFIG ?= dict();
 variable QUATTOR_REPOSITORY_LIST ?= list('snapshot/' + REPOSITORY_SNAPSHOT + '/Quattor-' + QUATTOR_RELEASE);
-variable DEBUG = debug('OS_REPOSITORY_LIST = ' + to_string(OS_REPOSITORY_LIST) + "\n" +
-                       'QUATTOR_REPOSITORY_LIST = ' + to_string(QUATTOR_REPOSITORY_LIST) + "\n" +
-                       'SITE_REPOSITORY_LIST = ' + to_string(SITE_REPOSITORY_LIST) + "\n" +
-                       'SITE_REPOSITORY_CONFIG = ' + to_string(SITE_REPOSITORY_CONFIG) + "\n");
+variable DEBUG = debug(format(
+    "OS_REPOSITORY_LIST = %s\nSITE_REPOSITORY_LIST = %s\nSITE_REPOSITORY_CONFIG = %s",
+    OS_REPOSITORY_LIST,
+    SITE_REPOSITORY_LIST,
+    SITE_REPOSITORY_CONFIG,
+));
 include 'quattor/functions/repository';
 '/software/repositories' = add_repositories(QUATTOR_REPOSITORY_LIST);
 '/software/repositories' = add_repositories(SITE_REPOSITORY_LIST);
@@ -29,11 +33,11 @@ include 'quattor/functions/repository';
 # Repositories related to Nagios
 variable REPOSITORY_CONFIG_NAGIOS ?= null;
 variable REPOSITORY_CONFIG_NAGIOS_INCLUDE = {
-  if (exists(REPOSITORY_CONFIG_NAGIOS) && is_defined(REPOSITORY_CONFIG_NAGIOS)) {
-    REPOSITORY_CONFIG_NAGIOS;
-  } else {
-    null;
-  };
+    if (exists(REPOSITORY_CONFIG_NAGIOS) && is_defined(REPOSITORY_CONFIG_NAGIOS)) {
+        REPOSITORY_CONFIG_NAGIOS;
+    } else {
+        null;
+    };
 };
 include REPOSITORY_CONFIG_NAGIOS_INCLUDE;
 

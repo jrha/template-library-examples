@@ -3,20 +3,20 @@ unique template site/ceph/osdschemas/crushmap-ec-md-cache;
 prefix '/software/components/ceph/clusters/ceph/crushmap';
 
 variable BASE_CHOICES ?= list(
-    nlist(
+    dict(
         'chtype', 'chooseleaf firstn',
         'bktype', 'host',
     ),
 );
 variable EC_CHOICES ?= list(
-    nlist(
+    dict(
         'chtype', 'chooseleaf indep',
         'bktype', 'host',
-    ),  
+    ),
 );
 
-'types' = list('osd','host','root');
-'tunables' = nlist(
+'types' = list('osd', 'host', 'root');
+'tunables' = dict(
     'choose_local_tries', 0,
     'choose_local_fallback_tries', 0,
     'choose_total_tries', 50,
@@ -44,11 +44,11 @@ variable EC_CHOICES ?= list(
 
 'buckets/0/name' = 'default';
 'buckets/0/type' = 'root';
-'buckets/0/labels' = list('md','ec','cache');
+'buckets/0/labels' = list('md', 'ec', 'cache');
 'buckets/0/buckets' = {
-    t= list();
+    t = list();
     foreach (idx; host; CEPH_HOSTS) {
-        append(t, nlist(
+        append(t, dict(
             'name', host,
             'type', 'host',
             ),
@@ -56,4 +56,3 @@ variable EC_CHOICES ?= list(
     };
     t;
 };
-

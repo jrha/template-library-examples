@@ -6,15 +6,15 @@ prefix '/software/components/ceph/clusters/ceph';
 
 
 'mdss' = {
-    ml = nlist();
-    foreach(idx;host;MDS_FQDNS) { 
-        config = nlist();
+    ml = dict();
+    foreach(idx; host; MDS_FQDNS) {
+        config = dict();
         if (is_defined(CEPH_MDS_CACHE_SIZE)){
             config['mds_cache_size'] = CEPH_MDS_CACHE_SIZE;
         };
-        l = nlist('config', config);
+        l = dict('config', config);
         l['fqdn'] = host;
-        ml[host] = l; 
+        ml[host] = l;
     };
     ml;
 };

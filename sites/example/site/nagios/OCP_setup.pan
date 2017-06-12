@@ -3,6 +3,8 @@
 #
 template site/nagios/OCP_setup;
 
+include 'components/filecopy/config';
+
 # modify specific options to publish results via OCP_daemon
 variable NAGIOS_GENERAL_OPTIONS = {
     x = SELF;
@@ -27,13 +29,10 @@ variable NAGIOS_GENERAL_OPTIONS = {
 
 variable NSCA_SUBMIT_RESULT_TEMPLATE ?= 'monitoring/nagios/nsca/OCP_daemon';
 
-variable OCP_SYSCONFIG ?= "# /etc/sysconfig/OCP_daemon\nNSCA_HOST="+NAGIOS_MASTER+"\n";
-"/software/components/filecopy/services" = npush(
-    escape("/etc/sysconfig/OCP_daemon"),
-    nlist("config",OCP_SYSCONFIG,
-          "perms","0644",
-          "owner","root",
-          "backup",false,
-    )
+variable OCP_SYSCONFIG ?= format("# /etc/sysconfig/OCP_daemon\nNSCA_HOST=%s\n", NAGIOS_MASTER);
+"/software/components/filecopy/services/{/etc/sysconfig/OCP_daemon}" = dict(
+    "config", OCP_SYSCONFIG,
+    "perms", "0644",
+    "owner", "root",
+    "backup", false,
 );
-

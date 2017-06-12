@@ -8,12 +8,12 @@ variable CEPH_CEPHFS_GROUP ?= CEPH_CEPHFS_USER;
 prefix '/software/components/metaconfig/services/{/etc/ceph/ceph.client.cephfs.keyring}';
 
 "contents" = if (is_defined(CEPH_CEPHFS_SECRET)) {
-    nlist("client.cephfs", nlist(
+    dict("client.cephfs", dict(
         "key", CEPH_CEPHFS_SECRET,
         )
-    );  
+    );
 } else {
-    nlist();
+    dict();
 };
 'module' = 'tiny';
 'mode' = 0600;

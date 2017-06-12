@@ -6,7 +6,7 @@
 structure template site/nagios/site-commands;
 
 # include the generic commands; they may be overridden below
-include { 'monitoring/nagios/commands' };
+include 'monitoring/nagios/commands';
 
 # use a configurable time-out for NRPE checks using NRPE_CHECK_COMMAND
 "check_nrpe" = NRPE_CHECK_COMMAND + " -H $HOSTADDRESS$ -c $ARG1$ -a $ARG2$ $ARG3$ $ARG4$ $ARG5$ $ARG6$ $ARG7$ $ARG8$ $ARG9$ $ARG10$ $ARG11$";

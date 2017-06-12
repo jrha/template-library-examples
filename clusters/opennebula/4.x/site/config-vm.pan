@@ -14,6 +14,6 @@ prefix "/system/opennebula";
 );
 
 # set aii opennebula hooks
-final variable OPENNEBULA_AII_FORCE = true; 
+final variable OPENNEBULA_AII_FORCE = true;
 final variable OPENNEBULA_AII_ONHOLD = false;
 

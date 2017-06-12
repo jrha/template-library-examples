@@ -7,12 +7,12 @@ prefix '/software/components/ceph/clusters/ceph';
 
 
 'monitors' = {
-    ml = nlist();
-    foreach(idx;host;MON_NAMES) { 
-        l = nlist();
+    ml = dict();
+    foreach(idx; host; MON_NAMES) {
+        l = dict();
         l['fqdn'] = MON_FQDNS[idx];
-        ml[host] = l; 
+        ml[host] = l;
     };
     ml;
 };
-    
+

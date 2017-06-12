@@ -11,11 +11,13 @@ structure template repository/biomed;
 "name" = "biomed";
 "owner" = "grid.support@lal.in2p3.fr";
 "protocols" = list(
-  nlist("name","http",
-        "url","http://quattor.web.lal.in2p3.fr/packages/biomed")
+    dict(
+        "name", "http",
+        "url", "http://quattor.web.lal.in2p3.fr/packages/biomed",
+    ),
 );
 
-"contents" = nlist(
+"contents" = dict(
 # pkg = same-1.0.0-1-x86_64
-escape("same-1.0.0-1-x86_64"),nlist("name","same","version","1.0.0-1","arch","x86_64"),
+escape("same-1.0.0-1-x86_64"), dict("name", "same", "version", "1.0.0-1", "arch", "x86_64"),
 );

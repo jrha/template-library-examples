@@ -15,7 +15,7 @@ variable OS_FLAVOUR_ENABLED ?= true;
 
 # YUM Repository snapshots
 variable YUM_SNAPSHOT_DATE ?= '20150223';
-variable AII_OSINSTALL_ROOT = '/yum/snapshots/'+YUM_SNAPSHOT_DATE;
+variable AII_OSINSTALL_ROOT = format('/yum/snapshots/', YUM_SNAPSHOT_DATE);
 
 # Set to true if you want to deploy machines in these clusster with an
 # AII server running Quattor 13.1.x.

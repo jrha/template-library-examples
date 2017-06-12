@@ -21,9 +21,9 @@ prefix "/software/components/mysql/servers/one";
 prefix "/software/components/mysql/databases/opennebula";
 "server" = "one";
 "users/oneadmin/password" = OPENNEBULA_MYSQL_ONEADMIN;
-"users/oneadmin/rights" = list("ALL PRIVILEGES"); 
+"users/oneadmin/rights" = list("ALL PRIVILEGES");
 "createDb" = false; # if false, run script
 "initScript/file" = "/dev/null";
 
 prefix "/software/components/chkconfig/service";
-"mysqld" = dict("on", "","startstop", true);
+"mysqld" = dict("on", "", "startstop", true);

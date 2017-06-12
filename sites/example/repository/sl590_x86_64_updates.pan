@@ -11,9 +11,11 @@ structure template repository/sl590_x86_64_updates;
 "name" = "sl590_x86_64_updates";
 "owner" = "grid.support@lal.in2p3.fr";
 "protocols" = list(
-  nlist("name","http",
-        "url","http://quattor.web.lal.in2p3.fr/packages/os/sl590-x86_64/updates/")
+    dict(
+        "name", "http",
+        "url", "http://quattor.web.lal.in2p3.fr/packages/os/sl590-x86_64/updates/",
+    ),
 );
 
-"contents" = nlist(
+"contents" = dict(
 );

@@ -7,12 +7,12 @@ variable CEPH_LIBVIRT_GROUP ?= CEPH_LIBVIRT_USER;
 prefix '/software/components/metaconfig/services/{/etc/ceph/ceph.client.libvirt.keyring}';
 
 "contents" = if (is_defined(CEPH_LIBVIRT_SECRET)) {
-    nlist("client.libvirt", nlist(
+    dict("client.libvirt", dict(
         "key", CEPH_LIBVIRT_SECRET,
         )
-    );  
+    );
 } else {
-    nlist();
+    dict();
 };
 'module' = 'tiny';
 'mode' = 0600;
